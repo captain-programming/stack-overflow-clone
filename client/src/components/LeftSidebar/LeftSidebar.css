@@ -1,18 +1,15 @@
 .left-sidebar{
-  width: 164px;
+  height: 100%;
   box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
-  transition: box-shadow ease-in-out 0.1s, transform ease-in-out 0.1s;
   box-sizing: border-box;
   font-size: 14px;
+  padding-top: 20px;
 }
 
 .side-nav{
-  height: auto;
+  height: auto; 
   max-width: 100%;
   position: sticky;
-  margin: 50px 0px;
-  padding: 20px 0px;
-
 }
 
 .side-nav-div{
@@ -33,9 +30,9 @@
   transition: 0.2s;
 }
 
-/* .side-nav-links:hover{
-  color: black;
-} */
+.side-nav-links p{
+  cursor: pointer;
+}
 
 .active{
   font-weight: bolder;

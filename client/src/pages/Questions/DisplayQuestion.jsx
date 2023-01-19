@@ -1,8 +1,8 @@
 import React from 'react';
-import HomeMainbar from '../../components/HomeMainbar/HomeMainbar';
 import LeftSidebar from '../../components/LeftSidebar/LeftSidebar';
 import RightSidebar from '../../components/RightSidebar/RightSidebar';
-import "./Home.css";
+import "../Home/Home.css"
+import QuestionDetails from './QuestionDetails';
 
 const Home = () => {
   return (
@@ -11,7 +11,7 @@ const Home = () => {
         <LeftSidebar />
       </div>
       <div className='home-container-2'>
-        <HomeMainbar />
+        <QuestionDetails />
         <RightSidebar />
       </div>
     </div>

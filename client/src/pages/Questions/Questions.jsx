@@ -2,9 +2,9 @@ import React from 'react';
 import HomeMainbar from '../../components/HomeMainbar/HomeMainbar';
 import LeftSidebar from '../../components/LeftSidebar/LeftSidebar';
 import RightSidebar from '../../components/RightSidebar/RightSidebar';
-import "./Home.css";
+import "../Home/Home.css";
 
-const Home = () => {
+const Questions = () => {
   return (
     <div className='home-container'>
       <div className='home-container-1'>
@@ -18,4 +18,4 @@ const Home = () => {
   )
 }
 
-export default Home;
+export default Questions;
