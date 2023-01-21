@@ -1,74 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom';
 import "./HomeMainbar.css";
 import QuestionsComponent from './QuestionsComponent';
+import {useDispatch, useSelector} from "react-redux";
+import { getQuestion } from '../../stores/questions/question.action';
+
 
 const HomeMainbar = () => {
-
-  const questionsList=[
-    {
-      id: 1,
-      upVotes: 3,
-      downVotes: 2,
-      noOfAnswers: 2,
-      questionTitle: "What is a function?",
-      questionBody: "It meant to be",
-      questionTags: ["Java", "node js", "mongo"],
-      userPosted: "mano",
-      userId: 1,
-      askedOn: "jan 1",
-      answer: [
-        {
-          answerBody: "Answer",
-          userAnswered: "kumar",
-          answeredOn: "jan 2",
-          userId: 2,
-        }
-      ]
-    },
-    {
-      id: 2,
-      upVotes: 3,
-      downVotes: 2,
-      noOfAnswers: 2,
-      questionTitle: "What is a function?",
-      questionBody: "It meant to be",
-      questionTags: ["Java", "node js", "mongo"],
-      userPosted: "mano",
-      userId: 1,
-      askedOn: "jan 1",
-      answer: [
-        {
-          answerBody: "Answer",
-          userAnswered: "kumar",
-          answeredOn: "jan 2",
-          userId: 2,
-        }
-      ]
-    },
-    {
-      id: 3,
-      upVotes: 3,
-      downVotes: 2,
-      noOfAnswers: 2,
-      questionTitle: "What is a function?",
-      questionBody: "It meant to be",
-      questionTags: ["Java", "node js", "mongo"],
-      userPosted: "mano",
-      userId: 1,
-      askedOn: "jan 1",
-      answer: [
-        {
-          answerBody: "Answer",
-          userAnswered: "kumar",
-          answeredOn: "jan 2",
-          userId: 2,
-        }
-      ]
-    },
-  ];
-
   const location = useLocation();
+  const {questionsList} = useSelector((store) => store.question);
+  const dispatch = useDispatch();
+
+
+  useEffect(()=>{
+    dispatch(getQuestion());
+  }, [dispatch])
 
   return (
     <div className='main-bar'>
@@ -86,8 +32,8 @@ const HomeMainbar = () => {
             <p>{questionsList.length} questions</p>
             <>
               {
-                questionsList.map((question)=>(
-                  <QuestionsComponent question={question} key={question.id}/>
+                questionsList?.map((question)=>(
+                  <QuestionsComponent question={question} key={question._id}/>
                 ))
               }
             </>

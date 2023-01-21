@@ -11,7 +11,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.currentUser);
 
-  console.log(user);
+  // console.log(user);
 
   useEffect(() => {
     dispatch(setCurrentUser(JSON.parse(localStorage.getItem('Profile'))));
@@ -34,7 +34,7 @@ const Navbar = () => {
         <div className='log-out-box'>
         <Link to='/profile' style={{textDecoration: "none"}}>
           <Avatar backgroundColor={'#009dff'} py="5px" px={'10px'} borderRadius="50%" color='white'>
-            D
+            {user.result.name.charAt(0).toUpperCase()}
           </Avatar> 
         </Link>
         <button className='nav-item nav-links'>Log out</button>

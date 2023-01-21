@@ -1,7 +1,9 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import userRoutes from "./routes/users.js";
+import userRoutes from "./routes/users.routes.js";
+import questionRoutes from "./routes/question.routes.js";
+import answerRoutes from "./routes/answer.routes.js";
 
 const app = express();
 app.use(express.json({limit: "30mb", extended: true}));
@@ -13,6 +15,8 @@ app.get("/", (req, res) => {
 })
 
 app.use('/users', userRoutes);
+app.use('/questions', questionRoutes);
+app.use('/answer', answerRoutes);
 
 const PORT = process.env.PORT || 8080;
 
