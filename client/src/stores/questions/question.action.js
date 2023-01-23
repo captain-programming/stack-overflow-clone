@@ -29,10 +29,29 @@ export const getQuestionByIdFun = (id) => async(dispatch)=>{
   }
 }
 
-export const postAnswerFun = (answerData) => async(dispatch)=>{
-  const {id, noOfAnswers, answerBody, userAnswered} = answerData;
+export const deleteQuestionFun = (id, navigate) => async(dispatch)=> {
   try{
-    const {data} = await api.postAnswer(id, noOfAnswers, answerBody, userAnswered)
+    const {data} = api.deleteQuestion(id)
+    // dispatch(getQuestion())
+    navigate('/');
+  }catch(err){
+    console.log(err);
+  }
+}
+
+export const voteQuestionFun = (id, value, userId) => async (dispatch)=>{
+  try{
+    const {data} = await api.voteQuestion(id, value, userId);
+    dispatch(getQuestionByIdFun(id))
+  }catch(err){
+    console.log(err);
+  }
+}
+
+export const postAnswerFun = (answerData) => async(dispatch)=>{
+  const {id, noOfAnswers, answerBody, userAnswered, userId} = answerData;
+  try{
+    const {data} = await api.postAnswer(id, noOfAnswers, answerBody, userAnswered, userId)
     dispatch({type: "POST_ANSWER", payload: data});
     dispatch(getQuestionByIdFun(id))
   }catch(err){
@@ -40,11 +59,11 @@ export const postAnswerFun = (answerData) => async(dispatch)=>{
   }
 }
 
-export const deleteQuestionFun = (id, navigate) => async(dispatch)=> {
+
+export const deleteAnswersFun =(id, answerId, noOfAnswers)=> async(dispatch)=>{
   try{
-    const {data} = api.deleteQuestion(id)
-    // dispatch(getQuestion())
-    navigate('/');
+    const {data} = await api.deleteAnswers(id, answerId, noOfAnswers)
+    dispatch(getQuestionByIdFun(id))
   }catch(err){
     console.log(err);
   }

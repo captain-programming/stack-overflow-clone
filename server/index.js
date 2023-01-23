@@ -4,8 +4,10 @@ import cors from "cors";
 import userRoutes from "./routes/users.routes.js";
 import questionRoutes from "./routes/question.routes.js";
 import answerRoutes from "./routes/answer.routes.js";
+import dotenv from 'dotenv';
 
 const app = express();
+dotenv.config();
 app.use(express.json({limit: "30mb", extended: true}));
 app.use(express.urlencoded({limit: "30mb", extended: true}))
 app.use(cors());
@@ -20,7 +22,8 @@ app.use('/answer', answerRoutes);
 
 const PORT = process.env.PORT || 8080;
 
-const CONNECTION_URL = "mongodb+srv://dinesh103:Dczx6hCgsHF8Ms7m@stack-overflow-clone.fw66dfl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const CONNECTION_URL = process.env.CONNECTION_URL;
+
 
 mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => app.listen(PORT, ()=> console.log(`Server running on port ${PORT}`)))

@@ -6,7 +6,7 @@ import Avatar from "../../components/Avatar/Avatar";
 import DisplayAnswer from './DisplayAnswer';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { deleteQuestionFun, getQuestionByIdFun, postAnswerFun } from '../../stores/questions/question.action';
+import { deleteQuestionFun, getQuestionByIdFun, postAnswerFun, voteQuestionFun } from '../../stores/questions/question.action';
 import moment from "moment";
 import copy from "copy-to-clipboard";
 import { useEffect } from 'react';
@@ -19,7 +19,7 @@ const QuestionDetails = () => {
   const {questionsSelf} = useSelector((store) => store.question);
   const [answer, setAnswer] = useState("");
   const user = useSelector((store) => store.currentUser);
-  const url = "http://localhost:3000"
+  const url = "http://localhost:3000";
 
   const handlePostAns = (e, answerLength) =>{
     e.preventDefault();
@@ -30,9 +30,11 @@ const QuestionDetails = () => {
       if(answer === ""){
         alert('Enter an answer before submitting');
       }else{
-        dispatch(postAnswerFun({id, noOfAnswers: answerLength + 1, answerBody: answer, userAnswered: user.result.name}));
+        dispatch(postAnswerFun({id, noOfAnswers: answerLength + 1, answerBody: answer, userAnswered: user.result.name, userId: user.result._id}));
       }
     }
+
+    setAnswer("");
   };
 
   const handleShare =()=>{
@@ -45,7 +47,15 @@ const QuestionDetails = () => {
     dispatch(deleteQuestionFun(id, navigate));
   }
 
-  console.log()
+  // console.log()
+
+  const handleUpVotes = () =>{
+    dispatch(voteQuestionFun(id, 'upVote', user.result._id))
+  }
+
+  const handleDownVotes = ()=>{
+    dispatch(voteQuestionFun(id, 'downVote', user.result._id))
+  }
 
   useEffect(()=>{
     dispatch(getQuestionByIdFun(id));
@@ -64,9 +74,9 @@ const QuestionDetails = () => {
                   <h1>{questionsSelf.questionTitle}</h1>
                   <div className='question-details-container-2'>
                     <div className='question-votes'>
-                      <AiFillCaretUp className='votes-icon'/>
-                      <p>{questionsSelf.upVotes?.length || 0 -questionsSelf.downVotes?.length || 0}</p>
-                      <AiFillCaretDown className='votes-icon'/>
+                      <AiFillCaretUp className='votes-icon' onClick={handleUpVotes}/>
+                      <p>{questionsSelf.upVote?.length || 0 -questionsSelf.downVote?.length || 0}</p>
+                      <AiFillCaretDown className='votes-icon' onClick={handleDownVotes}/>
                     </div>
                     <div style={{width: "100%"}}>
                       <p className='question-body'>
@@ -82,8 +92,11 @@ const QuestionDetails = () => {
                       <div className="question-actions-user">
                         <div>
                           <button type='button' onClick={handleShare}>Share</button>
-                          <button type='button' onClick={handleDelete}>Delete</button>
+                          
+                          {user.result._id===questionsSelf.userId && 
+                          <button type='button' onClick={handleDelete}>Delete</button>}
                         </div>
+
                         <div>
                           <p>asked {moment(questionsSelf.askedOn).fromNow()}</p>
                           <Link to={`/user/${questionsSelf.userId}`} className='user-link' style={{color: "#0086d8"}}>
@@ -110,7 +123,7 @@ const QuestionDetails = () => {
                 <section className='post-ans-container'>
                   <h3>Your Answer</h3>
                   <form onSubmit={(e)=> handlePostAns(e, questionsSelf.answer.length)}>
-                    <textarea name="" id="" cols="30" rows="10" onChange={(e) => setAnswer(e.target.value)}></textarea>
+                    <textarea value={answer} name="" id="" cols="30" rows="10" onChange={(e) => setAnswer(e.target.value)}></textarea>
                     <br/>
                     <input type={'Submit'} className='post-ans-btn' defaultValue={'Post Your Answer'}/>
                   </form>

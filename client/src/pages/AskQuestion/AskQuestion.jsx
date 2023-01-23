@@ -29,8 +29,10 @@ const AskQuestion = () => {
 
   const submitQuestion =(e)=>{
     e.preventDefault();
-    dispatch(askQuestion({...questionInfo, userPosted: user?.result?.name}, navigate))
+    dispatch(askQuestion({...questionInfo, userPosted: user?.result?.name, userId: user?.result?._id}, navigate))
   }
+
+  // console.log(user?.result._id);
 
   return (
     <>

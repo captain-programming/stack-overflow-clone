@@ -7,7 +7,7 @@ const QuestionsComponent = ({question}) => {
   return (
     <div className='display-question-container'>
       <div className="display-votes-ans">
-        <p>{question.upVotes?.length || 0 - question.downVotes?.length || 0}</p>
+        <p>{question.upVote?.length || 0 - question.downVote?.length || 0}</p>
         <p>votes</p>
       </div>
       <div className="display-votes-ans">

@@ -22,3 +22,33 @@ export const login = (authData, navigate)=> async(dispatch)=>{
     console.log(err);
   }
 }
+
+export const fetchAllUsersFun =() => async(dispatch) => {
+  try{
+
+    const {data} = await api.fetchAllUsers();
+    dispatch({type: "FETCH_USERS", payload: data});
+  }catch(err){
+    console.log(err);
+  }
+}
+
+export const fetchUsersByIdFun =(id) => async(dispatch) => {
+  try{
+
+    const {data} = await api.fetchUsersById(id);
+    dispatch({type: "FETCH_USERS_BY_ID", payload: data});
+  }catch(err){
+    console.log(err);
+  }
+}
+
+export const updateProfileFun = (id, updatedata) => async(dispatch) =>{
+  try{
+    const {data} = await api.updateProfile(id, updatedata)
+    dispatch({type: 'UPDATE_CURRENT_USER', payload: data})
+    dispatch(fetchUsersByIdFun(id));
+  }catch(err){
+    console.log(err);
+  }
+}

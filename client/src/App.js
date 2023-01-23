@@ -1,6 +1,6 @@
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import AllRouters from './pages/AllRouters';
+import AllRouters from './AllRouters';
 // import { useEffect } from 'react';
 // import { getQuestion } from './stores/questions/question.action';
 // import { useDispatch } from 'react-redux';
