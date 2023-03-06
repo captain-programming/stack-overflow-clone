@@ -1,3 +1,7 @@
+.user-profile-container-2{
+  width: 100%;
+  padding: 20px;
+}
 .user-details-container{
   width: 100%;
   display: flex;
@@ -27,8 +31,21 @@
   transition: 0.3s;
 }
 
+.upgrade-btn{
+  padding: 8px 10px;
+  border: none;
+  background-color: #0074cc;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
 .edit-profile-btn:hover{
   background-color: #f5f9fc;
+}
+.upgrade-btn:hover{
+  color: red;
 }
 
 .edit-profile-title{
@@ -85,4 +102,15 @@
   border: none;
   margin-left: 10px;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 500px){
+  .user-details-container{
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .edit-profile-form label input, .edit-profile-form label textarea{
+    width: 100%;
+  }
 }

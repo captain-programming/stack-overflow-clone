@@ -1,7 +1,6 @@
 .right-sidebar{
   width: 350px;
-  font-size: 15px;
-  float: right;
+  font-size: 14px;
 }
 
 .widget{
@@ -60,4 +59,10 @@
   background-color: #e1ecf4;
   color: #39739d;
   border-radius: 2px;
+}
+
+@media only screen and (max-width: 944px){
+  .right-sidebar{
+    display: none;
+  }
 }

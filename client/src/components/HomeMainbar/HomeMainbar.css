@@ -1,7 +1,5 @@
 .main-bar{
-  width: calc(69%);
-  float: left ;
-  padding: 0;
+  width: calc(100% - 350px)
 }
 
 .main-bar-header{
@@ -35,7 +33,7 @@
   display: flex;
   align-items: center;
   background-color: #fdf7e2;
-  border-bottom: solid 1px #edeff0;
+  border-bottom: solid 1px #d9e0e4;
 }
 
 .display-question-container .display-votes-ans{
@@ -80,12 +78,18 @@
 .display-tags-time .display-tags p{
   margin: 2px;
   padding: 4px;
-  font-size: 13px;
+  font-size: 15px;
   background-color: #edeff0;
   color: #39739d;
 }
 
 .display-tags-time .display-time{
-  font-size: 13px;
+  font-size: 15px;
+}
+
+@media only screen and (max-width: 944px){
+  .main-bar{
+    width: 100%
+  }
 }
 

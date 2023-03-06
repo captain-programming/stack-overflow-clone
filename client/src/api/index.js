@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API = axios.create({baseURL: "https://easy-teal-dove-tutu.cyclic.app/"});
+// const API = axios.create({baseURL: "https://easy-teal-dove-tutu.cyclic.app/"});
+const API = axios.create({baseURL: "http://localhost:8080/"});
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('Profile')) {
@@ -24,3 +25,7 @@ export const voteQuestion = (id, value, userId)=> API.patch(`questions/vote/${id
 
 export const postAnswer = (id, noOfAnswers, answerBody, userAnswered, userId) => API.patch(`/answer/post/${id}`, {noOfAnswers, answerBody, userAnswered, userId});
 export const deleteAnswers = (id, answerId, noOfAnswers) => API.patch(`/answer/delete/${id}`, { answerId, noOfAnswers});
+
+//paymetn
+
+export const handlePayment = async (amount) => API.post(`/payment`, {amount});

@@ -44,4 +44,4 @@ const HomeMainbar = () => {
   )
 }
 
-export default HomeMainbar
+export default HomeMainbar;

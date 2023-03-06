@@ -18,7 +18,7 @@ const Users = () => {
       <div className='home-container-1'>
         <LeftSidebar />
       </div>
-      <div className='home-container-2' style={{marginTop: "-10px"}}>
+      <div className='home-users' style={{marginTop: "-10px"}}>
         <h1 style={{fontWeight: "400"}}>Users</h1>
         <UserList />
       </div>

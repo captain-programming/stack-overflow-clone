@@ -1,5 +1,4 @@
 import React from 'react'
-import { useEffect } from 'react';
 import { useState } from 'react'
 import {useDispatch} from "react-redux";
 import { updateProfileFun } from '../../stores/auth/auth.action';
@@ -7,7 +6,7 @@ import { updateProfileFun } from '../../stores/auth/auth.action';
 const EditProfileForm = ({currentUser, setToggle}) => {
   const [name, setName] = useState(currentUser?.result?.name);
   const [about, setAbout] = useState(currentUser?.result?.about);
-  const [tags, setTags] = useState('');
+  const [tags, setTags] = useState([]);
   const dispatch = useDispatch();
 
   const handleSubmit = (e)=>{

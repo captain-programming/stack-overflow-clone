@@ -2,7 +2,7 @@ import React from 'react'
 import LeftSidebar from '../../components/LeftSidebar/LeftSidebar'
 import Avatar from "../../components/Avatar/Avatar";
 import {useDispatch, useSelector} from "react-redux";
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { fetchUsersByIdFun } from '../../stores/auth/auth.action';
 import {FaBirthdayCake, FaPen} from "react-icons/fa";
@@ -16,10 +16,16 @@ const UserProfile = () => {
   const {userInfo} = useSelector((store) => store.users);
   const user = useSelector((store) => store.currentUser);
   const {id} = useParams();
+  const navigate=useNavigate();
   const dispatch = useDispatch();
   const [toggle, setToggle] = useState(false);
 
   // console.log(userInfo);
+
+  const upgradePlan = () => {
+
+    navigate("/for-teams/subscriptions")
+  }
 
   useEffect(()=>{
     dispatch(fetchUsersByIdFun(id));
@@ -30,7 +36,7 @@ const UserProfile = () => {
       <div className='home-container-1'>
         <LeftSidebar />
       </div>
-      <div className='home-container-2'>
+      <div className='user-profile-container-2'>
         <section>
           <div className="user-details-container">
             <div className="user-details">
@@ -46,9 +52,15 @@ const UserProfile = () => {
               </div>
             </div>
               {user?.result._id === id && (
+                <div style={{display: "flex", flexDirection: "column", gap: "10px"}}>
                 <button type='button' onClick={() => setToggle(true)} className = {'edit-profile-btn'}>
                   <FaPen style={{marginRight: "4px"}}/> Edit Profile
                 </button>
+                <h4>My plans: <span style={{color: "blue"}}>{user?.result.plans}</span></h4>
+                {user?.result.plans!=="Gold" && <button type='button' onClick={upgradePlan} className = {'upgrade-btn'}>
+                  Upgrade Plan
+                </button>}
+                </div>
               )}
           </div>
           <>

@@ -1,7 +1,12 @@
+.questions-container-2{
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
 .question-details-page{
-  width: calc(69%);
-  float: left;
-  padding: 0px;
+  width: calc(100% - 350px);
+  padding: 20px;
 }
 
 .question-details-container{
@@ -131,4 +136,10 @@
   font-size: 14px;
   line-height: 18px;
   white-space: pre-line;
+}
+
+@media only screen and (max-width: 944px){
+  .question-details-page{
+    width: 100%
+  }
 }

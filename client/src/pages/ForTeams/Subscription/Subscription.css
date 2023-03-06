@@ -1,0 +1,132 @@
+.subscription-container{
+  padding: 100px;
+}
+
+.subscription-container h1{
+  font-size: 40px;
+  max-width: 400px;
+}
+
+.subscription-container > p{
+  max-width: 500px;
+  font-size: 20px;
+  color: gray;
+}
+.subscription-container .plans-container{
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: space-between;
+}
+.plans-container .planCards{
+  width: 260px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.planCards:nth-child(1) .plan-name{
+  width: fit-content;
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: 400;
+  border: 1px solid rgb(196, 183, 183);
+}
+.planCards:nth-child(2) .plan-name{
+  width: fit-content;
+  background-color: silver;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: 400;
+  color: #3C3630;
+}
+.planCards:nth-child(3) .plan-name{
+  width: fit-content;
+  background-color: gold;
+  color: blueviolet;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: 400;
+}
+
+.planCards .price{
+  font-size: 20px;
+  font-weight: 500;
+  font-family: DM sans-serif;
+}
+.planCards .features h4{
+  margin-bottom: 0;
+  font-family: DM sans-serif;
+}
+
+.planCards button{
+  margin-top: 40px;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-family: DM sans-serif;
+  border-radius: 5px;
+  font-size: 20px;
+  border: none;
+  color: blue;
+  cursor: pointer;
+}
+
+/* modal css */
+.modal{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.modal .modalpop{
+  width: 400px;
+  height: 400px;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.modalpop .payment-wish{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.modalpop .payment-wish button{
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 20px;
+  margin-top: 50px;
+  color: blue;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: DM sans-serif;
+}
+
+.modalpop .payment-wish p{
+  margin: 0;
+  color: red;
+  font-weight: 500;
+  font-family: DM sans-serif;
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 750px){
+  .subscription-container{
+    margin-top: 50px;
+    padding: 20px;
+  }
+  .modal .modalpop{
+    width: 300px;
+    height: 400px;
+  }
+}

@@ -32,7 +32,7 @@ const Auth = () => {
         alert("Enter a name to continue");
       }
 
-      dispatch(signup(creds, navigate));
+      dispatch(signup({...creds, plans: "Free"}, navigate));
     }else{
       dispatch(login(creds, navigate));
     }
